@@ -8,7 +8,9 @@ router.get('/',controllers.landing);
 
 router.post('/createlist', controllers.CreateList);
 
-router.post('/editlist', controllers.EditList);
+router.post('/EditTodo', controllers.EditTodo);
+router.post('/AddTodo', controllers.AddTodo);
+
 // router.get('/showlist',controllers.ShowList);
 
 

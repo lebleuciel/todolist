@@ -29,8 +29,68 @@ exports.CreateList = (request,res) =>{
     res.status(200).send("done");
 }
 
+exports.EditTodo = (request, res) => {
+  var List = require('../models/models');
+  var listname = request.body.name;
+  var todo = request.body.todo;
+
+  List.updateOne({
+    name: listname
+  }, {
+    $set: {
+      todo: todo
+    }
+  }, (error, docs) => {
+    if (error) {
+      console.log('error');
+    } else {
+      console.log('list updated');
+    }
+  });
+};
+
+exports.AddTodo = (request, res) => {
+  var List = require('../models/models');
+  var listname = request.body.name;
+  var todo = request.body.todo;
+
+  List.updateOne({
+    name: listname
+  }, {
+    $push: {
+      todo: todo
+    }
+  }, (error, docs) => {
+    if (error) {
+      console.log('error');
+    } else {
+      console.log('todo added');
+    }
+  });
+};
 
 
+
+
+
+// exports.EditList = (request,res) => {
+//   var List = require('../models/models')
+//   var listname = request.body.name ;
+//   var todo = request.body.todo ;
+
+//   List.find({
+//       name : listname
+//     }, 
+//     (error, docs) => {
+//       if (error) {
+//         console.log('error');
+//       } else {
+//         List.listname.insertOne({
+//           todo : todo
+//         });
+//       };
+//     });
+// }
 
 
 
