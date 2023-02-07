@@ -7,8 +7,8 @@ const controllers = require('../controllers/controller');
 router.get('/',controllers.landing);
 
 router.post('/createlist', controllers.CreateList);
-// router.post('/createitem',controllers.CreateItem);
-// router.post('/edititem', controllers.EditItem);
+
+router.post('/editlist', controllers.EditList);
 // router.get('/showlist',controllers.ShowList);
 
 

@@ -1,4 +1,5 @@
 const { request } = require("express");
+const List = require("../models/models");
 
 exports.landing = () => {
   console.log('hi from landing!');
@@ -7,21 +8,29 @@ exports.landing = () => {
 
 exports.CreateList = (request,res) =>{
   var listname = request.body.name ;
+  var todo = request.body.todo ;
+
   console.log(listname);
   var List = require('../models/models')
   var newlist = new List({
-    name : listname 
+    name : listname ,
+    todo : todo
   })
   newlist
     .save()
     .then(() => {
         console.log('new list created! name: ',listname);
+        console.log('new todo added! todo: ',todo);
+
     })
     .catch(error => {
         console.log('ERROR', error);
     });
     res.status(200).send("done");
 }
+
+
+
 
 
 
